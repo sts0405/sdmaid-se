@@ -55,7 +55,7 @@
         android:backgroundTint="?colorTertiaryContainer"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingHorizontal="10dp"
+        android:paddingHorizontal="8dp"
         android:paddingVertical="10dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/title_container"
@@ -65,16 +65,31 @@
         app:layout_constraintTop_toTopOf="@id/title_container"
         tools:visibility="visible">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/ribbon_primary"
-            style="@style/TextAppearance.Material3.LabelMedium"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Beta"
-            android:textColor="?colorOnTertiaryContainer"
-            android:textStyle="bold"
-            app:iconTint="?colorOnTertiaryContainer"
-            tools:ignore="HardcodedText,SpUsage" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginEnd="2dp"
+                android:src="@drawable/ic_bug_report"
+                app:tint="?colorOnTertiaryContainer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ribbon_primary"
+                style="@style/TextAppearance.Material3.LabelMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beta"
+                android:textColor="?colorOnTertiaryContainer"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:iconTint="?colorOnTertiaryContainer"
+                tools:ignore="HardcodedText,SpUsage" />
+        </LinearLayout>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/ribbon_secondary"
@@ -84,7 +99,7 @@
             android:layout_gravity="center"
             android:text="v?.?.?-beta?"
             android:textColor="?colorOnTertiaryContainer"
-            android:textSize="10dp"
+            android:textSize="8dp"
             app:iconTint="?colorOnTertiaryContainer"
             tools:ignore="HardcodedText,SpUsage" />
     </LinearLayout>
