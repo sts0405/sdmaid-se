@@ -13,6 +13,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.sdmse.R
+import eu.darken.sdmse.common.EdgeToEdge
 import eu.darken.sdmse.common.easterEggProgressMsg
 import eu.darken.sdmse.common.error.asErrorDialogBuilder
 import eu.darken.sdmse.common.getColorForAttr
@@ -39,12 +40,18 @@ class DashboardFragment : Fragment3(R.layout.dashboard_fragment) {
     @Inject lateinit var previewDialog: PreviewDeletionDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        ui.list.setupDefaults(
-            dashAdapter,
-            verticalDividers = false,
-            fastscroll = false,
-            layouter = GridLayoutManager(context, getSpanCount(), GridLayoutManager.VERTICAL, false)
-        )
+        EdgeToEdge().apply {
+            topHalf(ui.list)
+        }
+
+        ui.list.apply {
+            setupDefaults(
+                dashAdapter,
+                verticalDividers = false,
+                fastscroll = false,
+                layouter = GridLayoutManager(context, getSpanCount(), GridLayoutManager.VERTICAL, false)
+            )
+        }
 
         vm.listItems.observe2(ui) {
             listProgress.isVisible = it.isEmpty()
